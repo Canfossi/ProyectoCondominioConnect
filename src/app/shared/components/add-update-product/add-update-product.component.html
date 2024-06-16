@@ -49,28 +49,30 @@
       type="number"
       label="Garantía"
       (ionInput)="setNumberInputs()"
+      disabled 
     ></app-custom-input>
-
+    
     <!-- Validaciones para el campo de precio -->
     <div class="validators" *ngIf="form.controls.price.errors && form.controls.price.touched">
       <div *ngIf="form.controls.price.errors?.['required']">Este campo es requerido</div>
       <div *ngIf="form.controls.price.errors?.['min']">El precio mínimo debe ser 0</div>
     </div>
-
+    
     <!-- Componente personalizado de entrada para las unidades vendidas -->
     <app-custom-input
       [control]="form.controls.hora"
       type="number"
       label="Horas Solicitadas"
-      (ionInput)="setNumberInputs()"
+      (ionInput)="setNumberInputs()"  
     ></app-custom-input>
-
+   
     <!-- Validaciones para el campo de unidades vendidas -->
     <div class="validators" *ngIf="form.controls.hora.errors && form.controls.hora.touched">
+      <div *ngIf="form.controls.hora.value>6">Este campo no puede ser mayor a 4 horas</div>
       <div *ngIf="form.controls.hora.errors?.['required']">Este campo es requerido</div>
       <div *ngIf="form.controls.hora.errors?.['min']">La cantidad mínima debe ser 0</div>
     </div>
-
+    
     <!-- Botón para enviar el formulario, habilitado/deshabilitado según la validez del formulario -->
     <ion-button mode="ios" class="ion-margin" type="submit" [disabled]="form.invalid">
       {{ product ? 'Actualizar Reserva' : 'Agregar Reserva' }}

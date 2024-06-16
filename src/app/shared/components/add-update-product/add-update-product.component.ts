@@ -21,10 +21,9 @@ export class AddUpdateProductComponent implements OnInit {
     fecha: new FormControl(null, [Validators.required]),// Control para el tipo de servicio
     tipoServicio: new FormControl('', [Validators.required]),  // Control para la fecha del producto
     //soldUnits: new FormControl(null, [Validators.required, Validators.min(0)]),  // Control para las unidades vendidas del producto
-    price: new FormControl(null, [Validators.required, Validators.min(0)]), // Control para el precio del producto
+    price: new FormControl({value: null, disabled: true}, [Validators.required, Validators.min(0)]), // Control para el precio del producto
     hora: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(23)]),  // Control para la hora del producto (número entre 0 y 23)
-   
-      
+    
   
   });
 
@@ -33,7 +32,7 @@ export class AddUpdateProductComponent implements OnInit {
   utilsSvc = inject(UtilsService);  // Inyección del servicio de utilidades
 
   user = {} as User;  // Objeto para almacenar la información del usuario
-
+  
   
   ngOnInit() {
     this.user = this.utilsSvc.getFromLocalStorage('user');  // Obtener el usuario del localStorage al iniciar el componente
@@ -60,16 +59,18 @@ export class AddUpdateProductComponent implements OnInit {
     }
   }
 
-  //metodo para que cunado elijan un tipo de servicio me mande un valor ya fijada
+  //metodo para que cuando elijan un tipo de servicio me mande un valor ya fijada
 
   setPrecioImputs()
   {
     console.log("entre aqui");
   
     
-      if (this.form.get('tipoServicio').value === 'Estacionamiento') {
+      if (this.form.get('tipoServicio').value === 'Estacionamiento') { 
+       
         // Establecer el valor fijo para estacionamiento (1.000 pesos chilenos)
-        this.form.get('price')?.setValue('3000');
+        this.form.get('price')?.setValue('1000');
+        //this.form.get('price').disable = true;
       } 
       //----------------------------------------------------------------
       else  if (this.form.get('tipoServicio').value === 'Quincho') {
@@ -92,14 +93,20 @@ export class AddUpdateProductComponent implements OnInit {
        this.form.get('price')?.setValue('');
       }
     ;
+    console.log("entre aqui 23");
+  
+    this.form.get('price').disable({onlySelf: true});
   }
-
+//----------------------------------------------------------------
+ 
   // Método para convertir los valores de entrada de texto a números
   setNumberInputs() {
   
     let { hora, price } = this.form.controls;
     if (hora.value) hora.setValue(parseFloat(hora.value));  // Convierte soldUnits a número si tiene un valor
-    if (price.value) price.setValue(parseFloat(price.value));  // Convierte price a número si tiene un valor
+    if (price.value) price.setValue(parseFloat(price.value));
+
+     // Convierte price a número si tiene un valor
     
   }
 
