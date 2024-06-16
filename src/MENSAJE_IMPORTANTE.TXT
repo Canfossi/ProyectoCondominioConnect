@@ -1,0 +1,7 @@
+para cualquiera que quiera ver APP -POR FAVOR ,PORFAVOR PORFAVOR 
+desintale su npm fire y npm angular/fire 
+eh instale estos 
+npm:
+
+npm install @angular/fire@7.6.1 --save
+npm install firebase@9.23.0 --save

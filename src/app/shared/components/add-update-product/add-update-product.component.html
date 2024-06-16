@@ -1,0 +1,68 @@
+
+<!-- Se utiliza un componente de encabezado personalizado y se configura el título según si se está agregando o actualizando un producto -->
+<app-header [isModal]="true" [title]="product ? 'Actualizar Reserva' : 'Agregar Reserva'"></app-header>
+
+<ion-content>
+  <!-- Formulario que utiliza formGroup para la gestión de formularios en Angular -->
+  <form [formGroup]="form" class="ion-padding ion-text-center" (ngSubmit)="submit()" (keypress.enter)="submit()">
+    <!-- Avatar para mostrar la imagen del producto si existe -->
+    <ion-avatar *ngIf="form.value.image">
+      <img [src]="form.value.image" />
+    </ion-avatar>
+    <!-- Icono alternativo si no hay imagen seleccionada -->
+    <ion-icon class="image-icon" *ngIf="!form.value.image" name="image-outline"></ion-icon>
+
+    <br>
+    <!-- Botón para tomar o seleccionar una foto, llama a la función takeImage() -->
+    <ion-button (click)="takeImage()" mode="ios" size="small" shape="round">
+      Tomar/Seleccionar
+    </ion-button>
+
+    <!-- Componente personalizado de entrada para el nombre del producto -->
+    <app-custom-input
+      [control]="form.controls.name"
+      type="text"
+      label="Tipo de Servicio"
+    ></app-custom-input>
+
+    <!-- Validaciones para el campo de nombre -->
+    <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched">
+      <div *ngIf="form.controls.name.errors?.['required']">Este campo es requerido</div>
+      <div *ngIf="form.controls.name.errors?.['minlength']">El nombre debe tener al menos 4 caracteres</div>
+    </div>
+
+    <!-- Componente personalizado de entrada para el precio -->
+    <app-custom-input
+      [control]="form.controls.price"
+      type="number"
+      label="Garantía"
+      (ionInput)="setNumberInputs()"
+    ></app-custom-input>
+
+    <!-- Validaciones para el campo de precio -->
+    <div class="validators" *ngIf="form.controls.price.errors && form.controls.price.touched">
+      <div *ngIf="form.controls.price.errors?.['required']">Este campo es requerido</div>
+      <div *ngIf="form.controls.price.errors?.['min']">El precio mínimo debe ser 0</div>
+    </div>
+
+    <!-- Componente personalizado de entrada para las unidades vendidas -->
+    <app-custom-input
+      [control]="form.controls.soldUnits"
+      type="number"
+      label="Horas Solicitadas"
+      (ionInput)="setNumberInputs()"
+    ></app-custom-input>
+
+    <!-- Validaciones para el campo de unidades vendidas -->
+    <div class="validators" *ngIf="form.controls.soldUnits.errors && form.controls.soldUnits.touched">
+      <div *ngIf="form.controls.soldUnits.errors?.['required']">Este campo es requerido</div>
+      <div *ngIf="form.controls.soldUnits.errors?.['min']">La cantidad mínima debe ser 0</div>
+    </div>
+
+    <!-- Botón para enviar el formulario, habilitado/deshabilitado según la validez del formulario -->
+    <ion-button mode="ios" class="ion-margin" type="submit" [disabled]="form.invalid">
+      {{ product ? 'Actualizar Reserva' : 'Agregar Reserva' }}
+      <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
+    </ion-button>
+  </form>
+</ion-content>

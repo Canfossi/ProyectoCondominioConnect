@@ -1,0 +1,25 @@
+<ion-header class="ion-no-border"> <!-- Encabezado sin borde -->
+  <ion-toolbar color="primary"> <!-- Barra de herramientas con color primario -->
+
+    <ion-buttons slot="start"> <!-- Botones en la posición de inicio (izquierda) -->
+      
+      <!-- Botón de retroceso (back button) -->
+      <ion-back-button *ngIf="backButton" [defaultHref]="backButton"></ion-back-button>
+      
+      <!-- Botón para cerrar modal -->
+      <ion-button (click)="dismissmodal()" *ngIf="isModal">
+        <ion-icon name="close-circle-outline"></ion-icon> <!-- Icono de círculo de cierre -->
+      </ion-button>
+
+      <!-- Botón para abrir el menú lateral -->
+      <ion-menu-button *ngIf="showMenu" menu="menu-content"></ion-menu-button>
+      
+    </ion-buttons>
+    
+    <ion-title> <!-- Título del encabezado -->
+      <strong>{{ title }}</strong> <!-- Título fuerte -->
+      <div class="admin">Condominio Connect</div> <!-- Texto adicional -->
+    </ion-title>
+    
+  </ion-toolbar>
+</ion-header>

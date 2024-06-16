@@ -1,0 +1,96 @@
+<app-header [showMenu]="true" title="Inicio"></app-header>
+
+<ion-content>
+
+  <!-- Ion Refresher para actualizar la lista de productos -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Tarjeta para mostrar el número de reservas y la garantía total -->
+  <ion-card mode="ios" color="secondary" class="d-flex-center ion-text-center" *ngIf="!loading && products.length">
+    <div>
+      <h5>{{ products.length }}</h5>
+      <p>Reservas</p>
+    </div>
+    <!-- Muestra el total de ganancias usando la función getProfits() -->
+    <div>
+      <h5>{{ getProfits() | currency:'CLP' }}</h5>
+      <p>Garantía</p>
+    </div>
+  </ion-card>
+
+  <!-- Lista de productos -->
+  <ion-list *ngIf="!loading">
+    <ion-item-sliding class="product-item" *ngFor="let p of products">
+      <ion-item>
+
+        <!-- Avatar del usuario que hizo la reserva -->
+        <ion-avatar slot="start">
+          <!-- Muestra la imagen del usuario si está disponible -->
+          <img *ngIf="user()?.image" [src]="user()?.image" />
+          <!-- Si no hay imagen del usuario, muestra un ícono predeterminado -->
+          <ion-icon *ngIf="!user()?.image" class="empty-icon" name="person-circle-outline"></ion-icon>
+        </ion-avatar>
+
+        <ion-label>
+          <!-- Nombre del producto -->
+          <div class="name">{{ p.name }}</div>
+          <div class="data">
+            <!-- Muestra las horas utilizadas del producto -->
+            <strong>horas utilizadas: </strong>{{ p.soldUnits }}
+          </div>
+
+          <!-- Chip de Ionic para mostrar la garantía del producto -->
+          <ion-chip color="primary" mode="ios" outline="true">
+            <ion-label>Garantía:{{ p.price | currency:'CLP' }}</ion-label>
+          </ion-chip>
+        </ion-label>
+      </ion-item>
+
+      <!-- Opciones disponibles para cada producto -->
+      <ion-item-options>
+        <!-- Opción para editar un producto -->
+        <ion-item-option (click)="addUpdateProduct(p)">
+          <ion-icon class="option-btn" name="create-outline"></ion-icon>
+        </ion-item-option>
+
+        <!-- Opción para eliminar un producto -->
+        <ion-item-option (click)="deleteProduct(p)" color="danger">
+          <ion-icon class="option-btn" name="trash-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <!-- Lista de esqueletos que simulan productos durante el proceso de carga -->
+  <ion-list *ngIf="loading">
+    <ion-item class="product-item" *ngFor="let p of [1,1,1,1,1,1,1,1,1]">
+      <ion-avatar slot="start">
+        <!-- Esqueleto animado que representa la imagen del usuario -->
+        <ion-skeleton-text animated style="width: 100%; height: 100%;"></ion-skeleton-text>
+      </ion-avatar>
+
+      <ion-label>
+        <!-- Esqueleto animado que representa el nombre del producto -->
+        <div><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></div>
+        <!-- Esqueleto animado que representa las horas utilizadas del producto -->
+        <div><ion-skeleton-text animated style="width: 30%"></ion-skeleton-text></div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Mensaje mostrado cuando no hay productos disponibles -->
+  <div *ngIf="!loading && !products.length" class="empty">
+    <ion-icon name="shield-outline"></ion-icon>
+    <h3>No hay productos disponibles</h3>
+  </div>
+
+  <!-- Botón flotante para agregar un nuevo producto -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addUpdateProduct()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
