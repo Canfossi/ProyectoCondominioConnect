@@ -46,6 +46,12 @@ export class HomePage implements OnInit {
     return this.products.reduce((total, product) => total + product.price, 0);
   }
 
+   // Calcula y retorna las horas totales sumanda de todos las reserva
+   gethoras() {
+    return this.products.reduce((total, product) => total + product.hora, 0);
+  }
+
+
   // Obtiene la lista de productos ordenados por unidades vendidas de manera descendente
   getProducts() {
     let path = `users/${this.user().uid}/products`;
