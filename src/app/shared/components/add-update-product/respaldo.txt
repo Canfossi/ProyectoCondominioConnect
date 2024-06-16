@@ -1,0 +1,15 @@
+ estos van en add-update-product
+ 
+ <!-- Componente personalizado de entrada para el nombre del producto -->
+    <app-custom-input
+      [control]="form.controls.name"
+      type="text"
+      label="Tipo de Servicio"
+    ></app-custom-input>
+
+
+<!-- Validaciones para el campo de nombre -->
+    <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched">
+      <div *ngIf="form.controls.name.errors?.['required']">Este campo es requerido</div>
+      <div *ngIf="form.controls.name.errors?.['minlength']">El nombre debe tener al menos 4 caracteres</div>
+    </div>

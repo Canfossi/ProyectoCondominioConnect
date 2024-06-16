@@ -18,17 +18,26 @@
       Tomar/Seleccionar
     </ion-button>
 
-    <!-- Componente personalizado de entrada para el nombre del producto -->
-    <app-custom-input
-      [control]="form.controls.name"
-      type="text"
-      label="Tipo de Servicio"
-    ></app-custom-input>
+   
+    <!-- calendario  -->
+    <ion-datetime [formControl]="form.controls.fecha" presentation="day-month-year"></ion-datetime>
 
+    <!-- seleccionar tipo de servicio-->
+    <ion-list>
+      <ion-item>
+        <ion-select [formControl]="form.controls.tipoServicio" label="TipoServicio" placeholder="Tipo de Servicio">
+          <ion-select-option value="Estacionamiento">Estacionamiento</ion-select-option>
+          <ion-select-option value="Quincho">Quincho</ion-select-option>
+          <ion-select-option value="Piscina">Piscina</ion-select-option>
+          <ion-select-option value="Sala De Evento">Sala De Evento</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    
     <!-- Validaciones para el campo de nombre -->
-    <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched">
-      <div *ngIf="form.controls.name.errors?.['required']">Este campo es requerido</div>
-      <div *ngIf="form.controls.name.errors?.['minlength']">El nombre debe tener al menos 4 caracteres</div>
+    <div class="validators" *ngIf="form.controls.tipoServicio.errors && form.controls.tipoServicio.touched">
+      <div *ngIf="form.controls.tipoServicio.errors?.['required']">Este campo es requerido</div>
+      <div *ngIf="form.controls.tipoServicio.errors?.['minlength']">El nombre debe tener al menos 4 caracteres</div>
     </div>
 
     <!-- Componente personalizado de entrada para el precio -->

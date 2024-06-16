@@ -12,6 +12,11 @@ hora:number,
 
 image:string,
 
-id:string
+id:string,
+
+tipoServicio:string,
+
+valorServicio:number,
+
 
 }

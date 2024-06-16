@@ -13,13 +13,17 @@ import { UtilsService } from 'src/app/services/utils.service';  // Servicio de u
 export class AddUpdateProductComponent implements OnInit {
 
   @Input() product: Product;  // Propiedad de entrada para recibir el producto a editar
-  
+
   form = new FormGroup({
     id: new FormControl(''),  // Control para el ID del producto (no visible en el formulario)
     image: new FormControl('', [Validators.required]),  // Control para la imagen del producto
-    name: new FormControl('', [Validators.required, Validators.minLength(4)]),  // Control para el nombre del producto
-    price: new FormControl(null, [Validators.required, Validators.min(0)]),  // Control para el precio del producto
-    soldUnits: new FormControl(null, [Validators.required, Validators.min(0)])  // Control para las unidades vendidas del producto
+    //name: new FormControl('', [Validators.required, Validators.minLength(4)]),  // Control para el nombre del producto
+    fecha: new FormControl(null, [Validators.required]),// Control para el tipo de servicio
+    price: new FormControl(null, [Validators.required, Validators.min(0)]), // Control para el precio del producto
+    tipoServicio: new FormControl('', [Validators.required]),  // Control para la fecha del producto
+    soldUnits: new FormControl(null, [Validators.required, Validators.min(0)]),  // Control para las unidades vendidas del producto
+      
+    
   });
 
   firebaseSvc = inject(FirebaseService);  // Inyección del servicio Firebase
