@@ -25,17 +25,21 @@ export class AddUpdateProductComponent implements OnInit {
     hora: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(23)]),  // Control para la hora del producto (número entre 0 y 23)
    
       
-    
+  
   });
+
 
   firebaseSvc = inject(FirebaseService);  // Inyección del servicio Firebase
   utilsSvc = inject(UtilsService);  // Inyección del servicio de utilidades
 
   user = {} as User;  // Objeto para almacenar la información del usuario
 
+  
   ngOnInit() {
     this.user = this.utilsSvc.getFromLocalStorage('user');  // Obtener el usuario del localStorage al iniciar el componente
     if (this.product) this.form.setValue(this.product);  // Si hay un producto existente, establecer los valores en el formulario
+ 
+   
   }
 
   // Método para tomar o seleccionar una imagen para el producto
@@ -56,11 +60,47 @@ export class AddUpdateProductComponent implements OnInit {
     }
   }
 
+  //metodo para que cunado elijan un tipo de servicio me mande un valor ya fijada
+
+  setPrecioImputs()
+  {
+    console.log("entre aqui");
+  
+    
+      if (this.form.get('tipoServicio').value === 'Estacionamiento') {
+        // Establecer el valor fijo para estacionamiento (1.000 pesos chilenos)
+        this.form.get('price')?.setValue('3000');
+      } 
+      //----------------------------------------------------------------
+      else  if (this.form.get('tipoServicio').value === 'Quincho') {
+        // Establecer el valor fijo para estacionamiento (1.000 pesos chilenos)
+        this.form.get('price')?.setValue('5000');
+      }
+      //---------------------------------------------------------------
+      else  if (this.form.get('tipoServicio').value === 'Piscina') {
+        // Establecer el valor fijo para estacionamiento (1.000 pesos chilenos)
+        this.form.get('price')?.setValue('2000');
+      }
+      //---------------------------------------------------------------
+      else  if (this.form.get('tipoServicio').value === 'Sala De Evento') {
+        // Establecer el valor fijo para estacionamiento (1.000 pesos chilenos)
+        this.form.get('price')?.setValue('30000');
+      }
+      //---------------------------------------------------------------
+      else {
+         //Limpiar el valor de garantia para otros tipos de servicio
+       this.form.get('price')?.setValue('');
+      }
+    ;
+  }
+
   // Método para convertir los valores de entrada de texto a números
   setNumberInputs() {
+  
     let { hora, price } = this.form.controls;
     if (hora.value) hora.setValue(parseFloat(hora.value));  // Convierte soldUnits a número si tiene un valor
     if (price.value) price.setValue(parseFloat(price.value));  // Convierte price a número si tiene un valor
+    
   }
 
   // Método para agregar un nuevo producto
