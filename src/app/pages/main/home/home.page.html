@@ -28,9 +28,7 @@
         <!-- Avatar del usuario que hizo la reserva -->
         <ion-avatar slot="start">
           <!-- Muestra la imagen del usuario si está disponible -->
-          <img *ngIf="user()?.image" [src]="user()?.image" />
-          <!-- Si no hay imagen del usuario, muestra un ícono predeterminado -->
-          <ion-icon *ngIf="!user()?.image" class="empty-icon" name="person-circle-outline"></ion-icon>
+          <img [src]="p.image" />
         </ion-avatar>
 
         <ion-label>
