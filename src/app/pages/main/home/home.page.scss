@@ -8,3 +8,18 @@ border-radius: 15px;
 ion-content{
     --padding-bottom: 70px;
 }
+
+ion-datetime{
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 100%; /* O el tamaño deseado del contenedor */
+}
+
+.text-container {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 100%; /* O el tamaño deseado del contenedor */
+    text-align: center; /* Asegura que el texto esté centrado si hay varias líneas */
+  }

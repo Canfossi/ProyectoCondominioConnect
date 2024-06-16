@@ -43,7 +43,7 @@ export class HomePage implements OnInit {
 
   // Calcula y retorna las ganancias totales sumando el precio de todos los productos
   getProfits() {
-    return this.products.reduce((total, product) => total + product.price, 0);
+    return this.products.reduce((total, product) => total + product.price * product.hora, 0);
   }
 
    // Calcula y retorna las horas totales sumanda de todos las reserva

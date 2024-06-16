@@ -11,18 +11,18 @@
   <ion-card mode="ios" color="secondary" class="d-flex-center ion-text-center" *ngIf="!loading && products.length">
     <div>
       <h5>{{ products.length }}</h5>
-      <p>Reservas</p>
+      <p>Reservas solicitadas </p>
     </div>
 
     <!-- Muestra el total de ganancias usando la función getProfits() -->
     <div>
       <h5>{{ gethoras() }}</h5>
-      <p>horas</p>
+      <p>horas totales</p>
     </div>
     <!-- Muestra el total de ganancias usando la función getProfits() -->
     <div>
       <h5>{{ getProfits() | currency:'CLP' }}</h5>
-      <p>Garantía</p>
+      <p>monto a pagar por reservas</p>
     </div>
   </ion-card>
 
