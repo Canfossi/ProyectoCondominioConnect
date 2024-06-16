@@ -51,7 +51,7 @@ export class HomePage implements OnInit {
     let path = `users/${this.user().uid}/products`;
     this.loading = true;
 
-    let query = [orderBy('soldUnits', 'desc')]; // Query para ordenar por unidades vendidas
+    let query = [orderBy('hora', 'desc')]; // Query para ordenar por unidades vendidas
 
     let sub = this.firebaseSvc.getCollectionData(path, query).subscribe({
       next: (res: any) => {

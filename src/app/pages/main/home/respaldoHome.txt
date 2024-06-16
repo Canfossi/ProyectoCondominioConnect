@@ -1,0 +1,9 @@
+        es de home.html
+
+      <!-- Nombre del producto -->
+          <div class="name">{{ p.name }}</div>
+
+        <div class="hour">
+            <!-- Muestra las horas utilizadas del la reserva -->
+            <strong>horas utilizadas: </strong>{{ p.hora }}
+          </div>

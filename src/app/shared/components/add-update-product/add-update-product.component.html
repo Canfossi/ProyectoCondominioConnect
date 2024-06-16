@@ -56,16 +56,16 @@
 
     <!-- Componente personalizado de entrada para las unidades vendidas -->
     <app-custom-input
-      [control]="form.controls.soldUnits"
+      [control]="form.controls.hora"
       type="number"
       label="Horas Solicitadas"
       (ionInput)="setNumberInputs()"
     ></app-custom-input>
 
     <!-- Validaciones para el campo de unidades vendidas -->
-    <div class="validators" *ngIf="form.controls.soldUnits.errors && form.controls.soldUnits.touched">
-      <div *ngIf="form.controls.soldUnits.errors?.['required']">Este campo es requerido</div>
-      <div *ngIf="form.controls.soldUnits.errors?.['min']">La cantidad mínima debe ser 0</div>
+    <div class="validators" *ngIf="form.controls.hora.errors && form.controls.hora.touched">
+      <div *ngIf="form.controls.hora.errors?.['required']">Este campo es requerido</div>
+      <div *ngIf="form.controls.hora.errors?.['min']">La cantidad mínima debe ser 0</div>
     </div>
 
     <!-- Botón para enviar el formulario, habilitado/deshabilitado según la validez del formulario -->

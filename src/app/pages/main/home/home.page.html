@@ -32,17 +32,31 @@
         </ion-avatar>
 
         <ion-label>
-          <!-- Nombre del producto -->
-          <div class="name">{{ p.name }}</div>
-          <div class="data">
-            <!-- Muestra las horas utilizadas del producto -->
-            <strong>horas utilizadas: </strong>{{ p.soldUnits }}
-          </div>
+           
+          <!-- Muestra la fecha utilizadas del la reserva -->
 
+           <ion-chip color="primary" mode="ios" outline="true">
+            <ion-label>fecha de reserva:{{ p.fecha }}</ion-label>
+          </ion-chip>
+
+          <!--tipo de servicio-->
+
+          <ion-chip color="primary" mode="ios" outline="true">
+            <ion-label>Tipo de Servicio:{{ p.tipoServicio }}</ion-label>
+          </ion-chip>
+          <br>
           <!-- Chip de Ionic para mostrar la garantía del producto -->
           <ion-chip color="primary" mode="ios" outline="true">
             <ion-label>Garantía:{{ p.price | currency:'CLP' }}</ion-label>
           </ion-chip>
+
+           <!--horas solicitadas-->
+            <br>
+           <ion-chip color="primary" mode="ios" outline="true">
+            <ion-label>horas utilizadas:{{ p.hora }}</ion-label>
+          </ion-chip>
+
+
         </ion-label>
       </ion-item>
 
