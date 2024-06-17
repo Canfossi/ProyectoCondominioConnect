@@ -21,6 +21,7 @@ export class HomePage implements OnInit {
   loading: boolean = false; // Variable para controlar el estado de carga
 
   ngOnInit() {
+    this.user();
   }
 
   // Retorna los datos del usuario desde el almacenamiento local
@@ -30,13 +31,17 @@ export class HomePage implements OnInit {
 
   // Se ejecuta cada vez que el usuario entra en la página
   ionViewWillEnter() {
-    this.getProducts();
+    if (this.user().perfil === 'Administrador') {
+      this.getAllProducts();
+    } else {
+      this.getProducts();
+    }
   }
 
   // Método para refrescar la lista de productos
   doRefresh(event) {
     setTimeout(() => {
-      this.getProducts();
+      this.ionViewWillEnter();
       event.target.complete();
     }, 1000);
   }
@@ -68,7 +73,39 @@ export class HomePage implements OnInit {
         sub.unsubscribe(); // Desuscribe la subscripción
       }
     });
+  };
+
+  async getAllProducts() {
+    this.loading = true;
+    const uids = await this.firebaseSvc.getAllCollectionData();
+    const query = [orderBy('hora', 'desc')];
+    const data = [];
+    for (const i in uids) {
+      const path = `users/${uids[i]}/products`;
+      let sub = this.firebaseSvc.getCollectionData(path, query).subscribe({
+        next: (response: any) => {
+          if (response.length > 0) {
+            response.forEach(res => {
+              this.products.push(res);
+            });
+            sub.unsubscribe();
+          }
+        }
+      });
+    } 
+    this.loading = false;
   }
+
+  // async getMarkers() {
+  //   const events = await firebase.firestore().collection('events')
+  //   events.get().then((querySnapshot) => {
+  //       const tempDoc = []
+  //       querySnapshot.forEach((doc) => {
+  //          tempDoc.push({ id: doc.id, ...doc.data() })
+  //       })
+  //       console.log(tempDoc)
+  //    })
+  //  }
 
   // Abre un modal para agregar o actualizar un producto
   async addUpdateProduct(product?: Product) {
@@ -79,7 +116,7 @@ export class HomePage implements OnInit {
     });
 
     if (success) {
-      this.getProducts(); // Actualiza la lista de productos si se realizó con éxito la operación
+      this.ionViewWillEnter(); // Actualiza la lista de productos si se realizó con éxito la operación
     }
   }
 

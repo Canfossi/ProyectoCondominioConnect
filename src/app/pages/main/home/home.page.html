@@ -52,10 +52,10 @@
           </ion-chip>
           <br>
           <!-- Chip de Ionic para mostrar la garantía del producto -->
-          <ion-chip color="primary" mode="ios" outline="true">
+          <!-- <ion-chip color="primary" mode="ios" outline="true">
             <ion-label>Garantía:{{ p.price | currency:'CLP' }}</ion-label>
           </ion-chip>
-          <br>
+          <br> -->
            <!--horas solicitadas-->
             
            <ion-chip color="primary" mode="ios" outline="true">
@@ -105,7 +105,7 @@
   </div>
 
   <!-- Botón flotante para agregar un nuevo producto -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="user().perfil !== 'Administrador'">
     <ion-fab-button (click)="addUpdateProduct()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

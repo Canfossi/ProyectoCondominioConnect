@@ -20,7 +20,8 @@
 
    
     <!-- calendario  -->
-    <ion-datetime [formControl]="form.controls.fecha" presentation="day-month-year"  ></ion-datetime>
+    <ion-datetime #orderDatePicker id="orderDatePicker" [formControl]="form.controls.fecha" presentation="day-month-year" (click)="createDateListeners()"
+    ></ion-datetime>
 
     <!-- seleccionar tipo de servicio-->
     <ion-list>
@@ -44,13 +45,13 @@
 
    
     <!-- Componente personalizado de entrada para el precio -->
-    <app-custom-input
+    <!-- <app-custom-input
       [control]="form.controls.price"
       type="number"
       label="Garantía"
       (ionInput)="setNumberInputs()"
       disabled 
-    ></app-custom-input>
+    ></app-custom-input> -->
     
     <!-- Validaciones para el campo de precio -->
     <div class="validators" *ngIf="form.controls.price.errors && form.controls.price.touched">

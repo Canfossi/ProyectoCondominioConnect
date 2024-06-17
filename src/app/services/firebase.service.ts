@@ -3,7 +3,7 @@ import{AngularFireAuth}from '@angular/fire/compat/auth';
 import{getAuth,signInWithEmailAndPassword,createUserWithEmailAndPassword,updateProfile,sendPasswordResetEmail}from'firebase/auth';
 import { User } from '../models/user.model';
 import{ AngularFirestore }from '@angular/fire/compat/firestore';
-import{getFirestore,setDoc,doc,getDoc,addDoc,collection,collectionData,query,updateDoc,deleteDoc}from '@angular/fire/firestore';
+import{getFirestore,setDoc,doc,getDoc,addDoc,collection,collectionData,query,updateDoc,deleteDoc,getDocs}from '@angular/fire/firestore';
 import { UtilsService } from './utils.service';
 import{AngularFireStorage}from '@angular/fire/compat/storage';
 import{getStorage, uploadString, ref, getDownloadURL,deleteObject}from"firebase/storage";
@@ -68,6 +68,16 @@ export class FirebaseService {
 
       return collectionData(query(ref,...collectionQuery),{idField:'id'});//=====consultar por que el ref con 
 
+   }
+
+   async getAllCollectionData() {
+    const responseData = await getDocs(collection(getFirestore(), "users"));
+    const uid = [];
+    responseData.forEach((doc) => {
+      uid.push(doc.id);
+      // return { id: doc.id, ...doc.data() }
+    });
+    return uid;
    }
 
    //============setear document se utiliza en un principio para guardar los datos de un usuario ================
