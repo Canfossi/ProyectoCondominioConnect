@@ -192,33 +192,4 @@ export class AddUpdateProductComponent implements OnInit {
       loading.dismiss();  // Cierra el componente de carga al finalizar la operación
     });
   }
-
-  createDateListeners() {
-    // Observe Date changes
-    const self = this;
-    var previous = '';
-    const targetNode = document.querySelector('ion-datetime#orderDatePicker');
-    const config = { attributes: true, childList: true, subtree: true };
-    const callback = function(mutationsList, observer) {
-        for(const mutation of mutationsList) {
-            if (mutation.type === 'attributes') {
-                var e = document.querySelector('ion-datetime#orderDatePicker').shadowRoot.querySelector('ion-label').textContent;
-                if(e !== previous)
-                {
-                    previous = e;
-                    console.log('[Date Listener]: e', e);
-                    let date_interpret = new Date(e);
-                    // self.current_month = date_interpret.getMonth()+1;
-                    // console.log('[Date Listener]: Current month', self.current_month);
-                    // self.current_month_blockout_dates = self.checkMonth(self.current_month);
-                    
-                    return;
-                }
-            }
-        }
-    };
-    const observer = new MutationObserver(callback);
-    observer.observe(targetNode, config);
-  }
-
 }
