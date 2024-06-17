@@ -21,7 +21,8 @@ export class AddUpdateProductComponent implements OnInit {
     fecha: new FormControl(null, [Validators.required]),// Control para el tipo de servicio
     tipoServicio: new FormControl('', [Validators.required]),  // Control para la fecha del producto
     //soldUnits: new FormControl(null, [Validators.required, Validators.min(0)]),  // Control para las unidades vendidas del producto
-    price: new FormControl({value: null, disabled: true}, [Validators.required, Validators.min(0)]), // Control para el precio del producto
+    price: new FormControl(null, [Validators.required, Validators.min(0)]), // Control para el precio del producto
+   // price: new FormControl({value: null, disabled: true}, [Validators.required, Validators.min(0)]), // Control para el precio del producto
     hora: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(23)]),  // Control para la hora del producto (número entre 0 y 23)
     
   
@@ -95,7 +96,7 @@ export class AddUpdateProductComponent implements OnInit {
     ;
     console.log("entre aqui 23");
   
-    this.form.get('price').disable({onlySelf: true});
+    //this.form.get('price').disable({onlySelf: true});
   }
 //----------------------------------------------------------------
  
