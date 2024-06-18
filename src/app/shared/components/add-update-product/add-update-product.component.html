@@ -20,7 +20,15 @@
 
    
     <!-- calendario  -->
-    <ion-datetime [formControl]="form.controls.fecha" presentation="day-month-year" ></ion-datetime>
+
+    <ion-datetime-button  datetime="datetime" ></ion-datetime-button>
+      <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime  [formControl]="form.controls.fecha" id="datetime"></ion-datetime>
+          </ng-template>
+    </ion-modal>
+    <!-- <ion-datetime [formControl]="form.controls.fecha" presentation="day-month-year" ></ion-datetime>-->
+   
 
     <!-- seleccionar tipo de servicio-->
     <ion-list>
@@ -35,22 +43,20 @@
     </ion-list>
     
     <!-- Validaciones para el campo de nombre -->
-    <div class="validators" *ngIf="form.controls.tipoServicio.errors && form.controls.tipoServicio.touched"
-    
-    >
+    <div class="validators" *ngIf="form.controls.tipoServicio.errors && form.controls.tipoServicio.touched">
       <div *ngIf="form.controls.tipoServicio.errors?.['required']">Este campo es requerido</div>
       <div *ngIf="form.controls.tipoServicio.errors?.['minlength']">El nombre debe tener al menos 4 caracteres</div>
     </div>
 
    
     <!-- Componente personalizado de entrada para el precio -->
-    <!-- <app-custom-input
+     <app-custom-input
       [control]="form.controls.price"
       type="number"
-      label="Garantía"
+      label="Valor del Servicio"
       (ionInput)="setNumberInputs()"
       disabled 
-    ></app-custom-input> -->
+    ></app-custom-input> 
     
     <!-- Validaciones para el campo de precio -->
     <div class="validators" *ngIf="form.controls.price.errors && form.controls.price.touched">
