@@ -7,3 +7,13 @@
             <!-- Muestra las horas utilizadas del la reserva -->
             <strong>horas utilizadas: </strong>{{ p.hora }}
           </div>
+
+
+
+
+          <ion-datetime-button  datetime="date" ></ion-datetime-button>
+      <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime  [formControl]="form.controls.fecha" id="date"></ion-datetime>
+          </ng-template>
+    </ion-modal>

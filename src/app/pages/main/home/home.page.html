@@ -41,23 +41,19 @@
            
           <!-- Muestra la fecha utilizadas del la reserva -->
 
-           <ion-chip color="primary" mode="ios" outline="true">
-            <ion-label>fecha de reserva:{{ p.fecha }}</ion-label>
+           <ion-chip color="primary" mode="ios" outline="true" >
+            <ion-label>fecha de reserva: {{ p.fecha }}</ion-label>
           </ion-chip>
           <br>
-          <!--fecha-->
-          <ion-chip color="primary" mode="ios" outline="true">
-            <ion-label>Hora: {{ p.fecha }}</ion-label>
-          </ion-chip>
-          <br>
+        
           <!--tipo de servicio-->
           <ion-chip color="primary" mode="ios" outline="true">
-            <ion-label>Tipo de Servicio:{{ p.tipoServicio }}</ion-label>
+            <ion-label>Tipo de Servicio: {{ p.tipoServicio }}</ion-label>
           </ion-chip>
           <br>
           <!-- Chip de Ionic para mostrar la garantía del producto -->
           <ion-chip color="primary" mode="ios" outline="true">
-            <ion-label>Garantía:{{ p.price | currency:'CLP' }}</ion-label>
+            <ion-label>Garantía: {{ p.price | currency:'CLP' }}</ion-label>
           </ion-chip>
           <br> 
            <!--horas solicitadas-->

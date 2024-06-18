@@ -24,7 +24,7 @@ export class AddUpdateProductComponent implements OnInit {
     price: new FormControl(null), //new FormControl(null, [Validators.required, Validators.min(0)]), // Control para el precio del producto
    // price: new FormControl({value: null, disabled: true}, [Validators.required, Validators.min(0)]), // Control para el precio del producto
     hora: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(23)]),  // Control para la hora del producto (número entre 0 y 23)
-    
+    //horaAgendada: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(23)]),
   
   });
 
@@ -35,6 +35,11 @@ export class AddUpdateProductComponent implements OnInit {
   user = {} as User;  // Objeto para almacenar la información del usuario
   
   
+ 
+  
+
+ 
+
   ngOnInit() {
     this.user = this.utilsSvc.getFromLocalStorage('user');  // Obtener el usuario del localStorage al iniciar el componente
     if (this.product) this.form.setValue(this.product);  // Si hay un producto existente, establecer los valores en el formulario

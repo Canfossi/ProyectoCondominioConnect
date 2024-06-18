@@ -18,7 +18,7 @@ tipoServicio:string,
 
 valorServicio:number,
 
-horaAjendada:number,
+horaAgendada:number,
 
 
 }

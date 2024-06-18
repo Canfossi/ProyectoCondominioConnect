@@ -24,6 +24,8 @@ export class HomePage implements OnInit {
     this.user();
   }
 
+  
+
   // Retorna los datos del usuario desde el almacenamiento local
   user(): User {
     return this.utilsSvc.getFromLocalStorage('user');

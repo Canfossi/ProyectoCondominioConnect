@@ -17,16 +17,23 @@
     <ion-button (click)="takeImage()" mode="ios" size="small" shape="round">
       Tomar/Seleccionar
     </ion-button>
-
-   
+<br>
+   solicitar hora y fecha:
     <!-- calendario  -->
-
-    <ion-datetime-button  datetime="datetime" ></ion-datetime-button>
+    <br>
+    <ion-datetime-button datetime="datetime"></ion-datetime-button>
       <ion-modal [keepContentsMounted]="true">
-          <ng-template>
-            <ion-datetime  [formControl]="form.controls.fecha" id="datetime"></ion-datetime>
-          </ng-template>
-    </ion-modal>
+        <ng-template>
+          <ion-datetime
+            [formControl]="form.controls.fecha"
+            id="datetime"
+          
+          ></ion-datetime>
+        </ng-template>
+      </ion-modal>
+
+    <br> 
+  
     <!-- <ion-datetime [formControl]="form.controls.fecha" presentation="day-month-year" ></ion-datetime>-->
    
 
