@@ -5,12 +5,20 @@ import { User } from 'src/app/models/user.model';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UtilsService } from 'src/app/services/utils.service';
 
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonds from 'pdfmake/build/vfs_fonts';
+import { Console } from 'console';
+pdfMake.vfs = pdfFonds.pdfMake.vfs;
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+
+
+  ObjectPDF : any;
 
   firebaseSvc = inject(FirebaseService);
   utilsSvc = inject(UtilsService);
@@ -21,6 +29,23 @@ export class ProfilePage implements OnInit {
   // Función para obtener el usuario desde el almacenamiento local
   user(): User {
     return this.utilsSvc.getFromLocalStorage('user');
+  }
+
+  //funcion de descarga de PDF
+  descargaPdf(){
+    var dd = {
+      content: [
+        'First paragraph',
+        'Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines'
+        
+      ]
+      
+    }
+    this.ObjectPDF =pdfMake.createPdf(dd);
+   console.log('ya tengo creado el PDF');
+
+    this.ObjectPDF.download('ReglamentoCondominio.pdf');
+    console.log('ya tengo Descargado el PDF');
   }
 
   // Función para tomar/seleccionar una imagen de perfil
