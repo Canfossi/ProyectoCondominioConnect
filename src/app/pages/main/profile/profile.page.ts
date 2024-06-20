@@ -10,6 +10,8 @@ import pdfFonds from 'pdfmake/build/vfs_fonts';
 import { Console } from 'console';
 pdfMake.vfs = pdfFonds.pdfMake.vfs;
 
+
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -35,8 +37,18 @@ export class ProfilePage implements OnInit {
   descargaPdf(){
     var dd = {
       content: [
-        'First paragraph',
-        'Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines'
+
+        'Reglamento del Condominio',
+
+      '- No se permite el ruido excesivo después de las 10 PM.',
+
+      '- Las áreas comunes deben mantenerse limpias.',
+
+      '- No se permite la tenencia de mascotas sin autorización.',
+
+      '- El estacionamiento es solo para vehículos registrados.',
+
+      '- Las reparaciones deben ser notificadas con anticipación.'
         
       ]
       
