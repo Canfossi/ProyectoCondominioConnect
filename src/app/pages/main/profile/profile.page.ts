@@ -37,18 +37,27 @@ export class ProfilePage implements OnInit {
   descargaPdf(){
     var dd = {
       content: [
+        'REGLAMENTO DE CONDOMINIOCONNETC: ',
 
-        'Reglamento del Condominio',
+      '-No se permite el ruido excesivo después de las 10 PM.',
 
-      '- No se permite el ruido excesivo después de las 10 PM.',
+      '-Las áreas comunes deben mantenerse limpias.',
 
-      '- Las áreas comunes deben mantenerse limpias.',
+      '-No se permite la tenencia de mascotas sin autorización.',
 
-      '- No se permite la tenencia de mascotas sin autorización.',
+      '-El estacionamiento es solo para vehículos registrados.',
 
-      '- El estacionamiento es solo para vehículos registrados.',
+      '-Las reparaciones deben ser notificadas con anticipación.',
 
-      '- Las reparaciones deben ser notificadas con anticipación.'
+      '-No se permite la instalación de antenas o parabólicas sin autorización.',
+
+      '-El uso de barbacoas solo está permitido en áreas designadas.',
+
+      '-Está prohibido colgar ropa en balcones y ventanas.',
+
+      '-Los propietarios deben informar de cualquier daño a las áreas comunes.',
+
+      '-Las fiestas deben terminar antes de las 12 AM los fines de semana.'
         
       ]
       
