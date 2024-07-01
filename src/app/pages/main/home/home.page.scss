@@ -23,3 +23,8 @@ ion-datetime{
     height: 100%; /* O el tamaño deseado del contenedor */
     text-align: center; /* Asegura que el texto esté centrado si hay varias líneas */
   }
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }

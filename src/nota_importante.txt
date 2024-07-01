@@ -1,0 +1,109 @@
+para saber si como funciona el HTML Y las funciones metanse en el HTML de la carpeta y el TS de cada carpeta (ejemplo: en la carpeta HOME que esta en la carpeta PAGES/MAIN/HOME 
+nos metemos en home.page.html y las funciones en home.page.ts)
+
+en la carpeta SRC/APP estan en la carpeta en donde esta la funciones de la aplicacion:
+
+en la carpeta GUARDS estan para utenticar al usuario: 
+
+--  en AUTH.GUARD.TS es para autenticar usuario.
+    En resumen, este código define una guardia de autenticación (AuthGuard) que utiliza Firebase
+    para determinar si un usuario está autenticado antes de permitir el acceso a una ruta específica. 
+    La lógica comprueba el estado de autenticación y si hay un usuario guardado en localStorage, 
+    permitiendo el acceso solo si ambos son verdaderos.
+
+-- en NO.AUTH.GUARD.TS es para verificar si el usuario no este autenticado.
+    En resumen, este código define una guardia de no autenticación (NoAuthGuard) que utiliza Firebase para determinar 
+    si un usuario no está autenticado antes de permitir el acceso a una ruta específica. Si el usuario está autenticado, 
+    se le redirige a la ruta /main/home y se deniega el acceso a la ruta protegida por esta guardia.  
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+en la carpeta MODELS definimos la intefaz de llamada product y user:
+
+--  En resumen, esta interfaz define la estructura de un objeto Product y user, 
+    especificando los tipos de datos para cada una de sus propiedades, 
+    lo que proporciona un esquema claro y consistente para trabajar con objetos de producto en una aplicación TypeScript.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+en la carpeta PAGES esta la subcarpeta llamada AUTH tiene una sub carpeta llamada forgot-password (olvidar-contraseña) es para validar cambiar comtraseña:
+
+-- En resumen, este código define un componente Angular llamado ForgotPasswordPage que gestiona el formulario de recuperación de contraseña.
+    Cuando el formulario es enviado, se verifica su validez y se muestra un indicador de carga mientras se envía un correo de recuperación a través del servicio de Firebase.
+    Si el correo es enviado con éxito, se muestra un mensaje de confirmación y se redirige al usuario a la página de autenticación. 
+    En caso de error, se muestra un mensaje de error.Finalmente, se oculta el indicador de carga.
+
+en la carpeta PAGES esta la subcarpeta llamada AUTH tiene una sub carpeta llamada sign-up (inscribirse) es para validar registrar usuario:
+
+-- En resumen, este código define un componente Angular llamado SignUpPage que gestiona el formulario de registro de usuarios. 
+    Cuando el formulario es enviado, se verifica su validez y se muestra un indicador de carga mientras se crea un nuevo usuario a través del servicio de Firebase.
+    Una vez creado el usuario, se actualiza su nombre, se guarda su información en la base de datos, y se almacena en el localStorage. 
+    Si hay algún error durante el proceso, se muestra un mensaje de error. Finalmente, se oculta el indicador de carga y se redirige al usuario a la página principal.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+en la carpeta MAIN tenemos las subCarpeta llamada HOME Y PROFILE:
+
+en la subcarpeta HOME nos muestra la pagina principal donde nos muestra las reserva de usuario como tambien el valor de la total de todas las reserva,hora y valor del servicios:
+
+--  En resumen, este código define un componente Angular llamado HomePage que gestiona la visualización y manipulación de productos. 
+    Al cargar la página, determina si el usuario es un administrador y obtiene los productos correspondientes.
+    Permite refrescar la lista de productos, calcular las ganancias y horas totales, y ordenar los productos por unidades vendidas.
+    También proporciona funciones para agregar, actualizar y eliminar productos, incluyendo la confirmación del usuario antes de la eliminación.
+
+------------------------------------------------------------------------------------------------------------------------------------------
+en la carpeta MAIN tenemos las subCarpeta llamada HOME Y PROFILE:
+
+en la subcarpeta PROFILE nos muestra el perfil de usuario:
+
+-- Este código define el componente MainPage en Angular, que gestiona la navegación y la sesión del usuario en la aplicación.
+
+1 --Propiedades:
+
+* pages: Define las páginas del menú principal con su título, URL e icono.
+
+*router, firebaseSvc, utilsSvc: Servicios inyectados para manejar la navegación, la autenticación y utilidades.
+
+*currentPath: Almacena la ruta actual del router.
+
+2--Métodos:
+
+* ngOnInit(): Se ejecuta al inicializar el componente y se suscribe a los eventos del router para actualizar currentPath.
+
+* user(): Obtiene el usuario desde el almacenamiento local usando UtilsService.
+
+* signOut(): Cierra la sesión del usuario usando FirebaseService.
+
+El componente permite la navegación entre diferentes páginas y gestiona el estado de la sesión del usuario.
+
+
+
+--en la carpeta SERVICES solo almacena la base de datos 
+
+-- en la carpeta SHARED TIENE LA subCarpeta COMPONENTS y el la subcarpeta COMPONENTS tiene una subCarpeta llamada ADD-UPDATE-PRODUCT donde generamo la reserva  
+    Resumen:
+    Este código define el componente AddUpdateProductComponent en Angular, que permite agregar o actualizar productos mediante un formulario.
+
+Propiedades:
+
+* @Input() product: Propiedad de entrada para recibir el producto a editar.
+
+* form: Formulario Reactivo con validaciones para los campos id, image, fecha, tipoServicio, price, y hora.
+
+* firebaseSvc, utilsSvc: Servicios inyectados para manejar operaciones de Firebase y utilidades.
+
+* user: Objeto que almacena la información del usuario.
+
+Métodos:
+
+* ngOnInit(): Obtiene el usuario desde el localStorage y establece los valores del formulario si hay un producto existente.
+
+* takeImage(): Permite al usuario capturar o seleccionar una imagen y establece la URL en el formulario.
+
+* submit(): Valida el formulario y llama a createProduct() o updateProduct() según sea necesario.
+
+* setPrecioImputs(): Establece el precio fijo según el tipo de servicio seleccionado.
+
+* setNumberInputs(): Convierte los valores de hora
+ 
+
+todas la demas carpeta son carpeta necesarias. pero no utiles en la funcional del programa igual metanse el los .ts para saber como funciona el programa.
+

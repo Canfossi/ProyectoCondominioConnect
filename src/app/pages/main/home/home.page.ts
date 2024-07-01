@@ -1,3 +1,4 @@
+// Importación de módulos y servicios necesarios
 import { Component, OnInit, inject } from '@angular/core';
 import { flatMap } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
@@ -7,24 +8,25 @@ import { UtilsService } from 'src/app/services/utils.service';
 import { AddUpdateProductComponent } from 'src/app/shared/components/add-update-product/add-update-product.component';
 import { orderBy } from 'firebase/firestore'; // Importación para ordenar
 
+// Decorador que define los metadatos del componente
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-home', // Selector del componente
+  templateUrl: './home.page.html', // Ruta de la plantilla HTML
+  styleUrls: ['./home.page.scss'], // Ruta de los estilos CSS
 })
 export class HomePage implements OnInit {
 
+  // Inyección de servicios necesarios
   firebaseSvc = inject(FirebaseService);
   utilsSvc = inject(UtilsService);
 
   products: Product[] = []; // Arreglo para almacenar productos
   loading: boolean = false; // Variable para controlar el estado de carga
 
+  // Método que se ejecuta al inicializar el componente
   ngOnInit() {
     this.user();
   }
-
-  
 
   // Retorna los datos del usuario desde el almacenamiento local
   user(): User {
@@ -53,11 +55,10 @@ export class HomePage implements OnInit {
     return this.products.reduce((total, product) => total + product.price * product.hora, 0);
   }
 
-   // Calcula y retorna las horas totales sumanda de todos las reserva
-   gethoras() {
+  // Calcula y retorna las horas totales sumadas de todas las reservas
+  gethoras() {
     return this.products.reduce((total, product) => total + product.hora, 0);
   }
-
 
   // Obtiene la lista de productos ordenados por unidades vendidas de manera descendente
   getProducts() {
@@ -77,6 +78,7 @@ export class HomePage implements OnInit {
     });
   };
 
+  // Obtiene todos los productos de todos los usuarios (para administradores)
   async getAllProducts() {
     this.loading = true;
     const uids = await this.firebaseSvc.getAllCollectionData();
@@ -97,17 +99,6 @@ export class HomePage implements OnInit {
     } 
     this.loading = false;
   }
-
-  // async getMarkers() {
-  //   const events = await firebase.firestore().collection('events')
-  //   events.get().then((querySnapshot) => {
-  //       const tempDoc = []
-  //       querySnapshot.forEach((doc) => {
-  //          tempDoc.push({ id: doc.id, ...doc.data() })
-  //       })
-  //       console.log(tempDoc)
-  //    })
-  //  }
 
   // Abre un modal para agregar o actualizar un producto
   async addUpdateProduct(product?: Product) {
@@ -181,3 +172,4 @@ export class HomePage implements OnInit {
   }
 
 }
+
