@@ -102,6 +102,28 @@ export class HomePage implements OnInit {
 
   // Abre un modal para agregar o actualizar un producto
   async addUpdateProduct(product?: Product) {
+
+
+      // Si se está intentando editar un producto existente
+      if (product) {
+        // Obtén la fecha actual
+        const currentDate = new Date();
+
+        // Verifica si la reserva ya pasó su fecha
+        if (new Date(product.fecha) < currentDate) {
+            // Muestra un mensaje de error al usuario si la reserva ya pasó
+            this.utilsSvc.presentToast({
+                message: "No se puede editar un producto cuya reserva ya pasó",
+                duration: 2500,
+                color: 'primary',
+                position: 'middle',
+                icon: 'alert-circle-outline'
+            });
+            return;
+        }
+    }
+
+
     let success = await this.utilsSvc.presentModal({
       component: AddUpdateProductComponent,
       cssClass: 'add-update-modal',
@@ -136,6 +158,25 @@ export class HomePage implements OnInit {
   // Elimina un producto específico
   async deleteProduct(product: Product) {
     let path = `users/${this.user().uid}/products/${product.id}`;
+
+
+    // Obtén la fecha actual
+    const currentDate = new Date();
+    
+    // Verifica si la reserva ya pasó su fecha
+    if (new Date(product.fecha) < currentDate) {
+        // Muestra un mensaje de error al usuario si la reserva ya pasó
+        this.utilsSvc.presentToast({
+            message: "No se puede eliminar un producto cuya reserva ya pasó",
+            duration: 2500,
+            color: 'primary',
+            position: 'middle',
+            icon: 'alert-circle-outline'
+        });
+        return;
+    }
+
+
 
     const loading = await this.utilsSvc.loading();
     await loading.present();
