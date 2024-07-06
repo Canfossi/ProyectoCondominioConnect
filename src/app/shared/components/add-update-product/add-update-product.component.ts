@@ -65,6 +65,7 @@ export class AddUpdateProductComponent implements OnInit {
     }
   }
 
+  
   //metodo para que cuando elijan un tipo de servicio me mande un valor ya fijada
 
   setPrecioImputs()
@@ -197,4 +198,27 @@ export class AddUpdateProductComponent implements OnInit {
       loading.dismiss();  // Cierra el componente de carga al finalizar la operación
     });
   }
+
+
+  validateDate(event: any) {
+    const selectedDate = new Date(event.detail.value);
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0); // Ignora las horas para la comparación
+
+    if (selectedDate < currentDate) {
+      this.utilsSvc.presentToast({
+        message: "Esta fecha ya pasó, por favor escoja otra",
+        duration: 2500,
+        color: 'primary',
+        position: 'middle',
+        icon: 'alert-circle-outline'
+      });
+
+      // Reinicia la fecha en el control del formulario a la fecha actual o a un valor válido
+      this.form.controls.fecha.setValue(null);
+    }
+  }
+
+  
 }
+

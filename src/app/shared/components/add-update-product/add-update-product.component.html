@@ -21,15 +21,17 @@
     <ion-title>Hora y Fecha </ion-title>
     <!-- calendario  -->
     <br>
-    <ion-datetime-button datetime="datetime"></ion-datetime-button>
-      <ion-modal [keepContentsMounted]="true">
-        <ng-template>
-          <ion-title>hora</ion-title><ion-datetime
-            [formControl]="form.controls.fecha"
-            id="datetime"
-          ></ion-datetime>
-        </ng-template>
-      </ion-modal>
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-title>hora</ion-title>
+        <ion-datetime
+          [formControl]="form.controls.fecha"
+          id="datetime"
+          (ionChange)="validateDate($event)"
+        ></ion-datetime>
+      </ng-template>
+    </ion-modal>
 
     <br> 
    
