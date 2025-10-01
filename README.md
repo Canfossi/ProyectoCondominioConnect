@@ -20,6 +20,11 @@ Pensada para comunidades, condominios o edificios residenciales que buscan digit
 Clona este repositorio e instala las dependencias:
 
 ```bash
-git clone https://github.com/Canfossi/ProyectoCondominioConnect.git
-cd reserva-espacios-comunes
-npm install
+1- clonan el repositorio
+ git clone https://github.com/Canfossi/ProyectoCondominioConnect.git
+2- importa el proyecto a su editor de codigo (EJ: visual studio)
+ ProyectoCondominioConnect
+3-en la terminal colocan el comando de abajo
+ npm install
+4-para que corra el proyecto utilizar el comando de abajo
+ ionic serve 
