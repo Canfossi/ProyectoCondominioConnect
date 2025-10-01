@@ -28,4 +28,5 @@ Clona este repositorio e instala las dependencias:
  npm install
 4-para que corra el proyecto utilizar el comando de abajo
  ionic serve 
-<img width="402" height="886" alt="Captura de pantalla 2025-10-01 021701" src="https://github.com/user-attachments/assets/1c06e4bb-e249-4eb6-961c-7521651493b4" />
+
+imagenes de como es el proyecto 
