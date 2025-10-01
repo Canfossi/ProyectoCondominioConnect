@@ -20,6 +20,6 @@ Pensada para comunidades, condominios o edificios residenciales que buscan digit
 Clona este repositorio e instala las dependencias:
 
 ```bash
-git clone https://github.com/tu-usuario/reserva-espacios-comunes.git
+git clone https://github.com/Canfossi/ProyectoCondominioConnect.git
 cd reserva-espacios-comunes
 npm install
