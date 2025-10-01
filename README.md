@@ -30,3 +30,4 @@ Clona este repositorio e instala las dependencias:
  ionic serve 
 
 imagenes de como es el proyecto 
+<img width="402" height="886" alt="Image" src="https://github.com/user-attachments/assets/ad4cf473-595a-4dea-84a1-a879d2ea791a" />
